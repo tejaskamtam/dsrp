@@ -1,5 +1,5 @@
 # manual
-songs.csv
+data/**
 
 # History files
 .Rhistory
