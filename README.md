@@ -1,3 +1,8 @@
-# spotify-top-hits
-An analysis of the kaggle dataset: https://www.kaggle.com/datasets/paradisejoy/top-hits-spotify-from-20002019
-Using R for the Data Science Research Program by The Coding School during Summer 2023
+# Data Science Research Project
+Host: The Coding School
+Program: Data Science Research Program
+Audience: High Schoolers
+Time: Summer 2023
+Location: Remote (Zoom)
+Technology: R and R Studio
+Postion: TA
