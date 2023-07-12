@@ -35,3 +35,4 @@ ggplot(data, aes(x=tempo, y=speechiness, color=explicit)) +
   labs(title="Song Speechiness by Tempo") +
   theme_bw()
 
+

@@ -1,0 +1,45 @@
+# Lab 5: Data Manipulation
+
+Imports
+
+```{r}
+library(dplyr)
+library(tibble)
+data <- as_tibble(read.csv("data/songs.csv"))
+```
+
+Filter with positional arguments in `dplyr::filter()`
+
+```{r echo=TRUE, paged.print=TRUE}
+non_country <- filter(data, !grepl("country", genre), !grepl("metal", genre))
+non_country
+```
+
+Sort by columns, ordered by position, using `dplyr::arrange()`
+
+```{r}
+# ordered sort by position: key then loudness
+key_sorted <- arrange(non_country, key, loudness)
+key_sorted
+```
+
+Create a subset of data and reorder cols
+
+```{r}
+# create subset by slicing using dplyr::select()
+sub_data <- select(key_sorted, artist, song, duration_ms, year, explicit, popularity, key, loudness, tempo, genre)
+```
+
+Mutate cols to create new cols using dplyr::mutate()
+
+```{r}
+# mutate duration_ms -> seconds as a new col
+mutate(sub_data, duration=duration_ms/1000)
+new_data <- mutate(sub_data, duration=duration_ms/1000)
+```
+
+Final new dataset
+
+```{r}
+summarize(new_data, mean_duration=mean(duration, na.rm=T), count=n(), .by=year)
+```
