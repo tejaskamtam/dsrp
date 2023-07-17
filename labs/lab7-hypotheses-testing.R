@@ -24,7 +24,7 @@ t.test(explicit$popularity, clean$popularity)
 ## ANOVA ####
 aov_res <- aov(data$popularity ~ factor(data$explicit), data)
 summary(aov_res)
-TukeyHSD(aov_res)
+tukey <- TukeyHSD(aov_res)
 
 ## Chi-Squared Test - check if groups are independent ####
 con_table <- table(data$explicit, data$popularity)
@@ -38,6 +38,12 @@ t
 chi <- chisq.test(t)
 chi
 chi$p.value
+chi$residuals
 corrplot(chi$residuals)
+
+
+
+
+
 
 
