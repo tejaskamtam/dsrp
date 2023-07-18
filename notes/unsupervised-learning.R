@@ -1,4 +1,4 @@
-library(ggplot)
+library(ggplot2)
 library(dplyr)
 data <- read.csv("data/songs.csv")
 
@@ -7,6 +7,8 @@ data <- read.csv("data/songs.csv")
 data_num <- select(data, -artist, -song, -explicit, -genre)
 pca <- prcomp(data_num, scale. = T)
 summary(pca)
+evecs <- (pca$rotation)^2
+evecs
 
 pcds <- as.data.frame(pca$x)
 pcds$explicit <- data$explicit

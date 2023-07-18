@@ -66,11 +66,15 @@ summary(fit$fit)
 
 #### 7. Make test predictions ####
 library(yardstick)
-install.packages("Metrics")
+# install.packages("Metrics")
 library(Metrics)
 results <- test
 
-results$tree <- predict(fit, test)$.pred_class
-results$tree
-f1(results$genre, results$tree)
-  
+results$predictions <- predict(fit, test)$.pred_class
+acc_table <- data.frame(actual=results$genre, preds=results$predictions)
+f1(results$genre, results$predictions)
+
+library(caret)
+out <- confusionMatrix(results$genre, results$predictions, mode="everything")
+byclass <- out[['byClass']]
+
